@@ -1,0 +1,417 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Princess ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff4f7;
+  color: #743b50;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+.screen {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen.active {
+  display: flex;
+  animation: fadeIn 1s ease;
+}
+
+.content {
+  max-width: 440px;
+  width: 100%;
+  z-index: 2;
+}
+
+h1, h2 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 43px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 2;
+  margin-top: 18px;
+}
+
+.small {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #b77c93;
+}
+
+.crown {
+  font-size: 54px;
+  display: block;
+  margin-bottom: 22px;
+  animation: float 3s infinite ease-in-out;
+}
+
+button {
+  background: #d982a0;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 15px 26px;
+  font-family: inherit;
+  margin-top: 28px;
+  font-size: 13px;
+  letter-spacing: .5px;
+  box-shadow: 0 8px 25px #d982a044;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.heart {
+  font-size: 65px;
+  display: inline-block;
+  margin: 25px 0;
+  cursor: pointer;
+  animation: heartbeat 1.4s infinite;
+}
+
+.card {
+  background: #ffffffb8;
+  border: 1px solid #f2d6e1;
+  padding: 24px;
+  border-radius: 22px;
+  margin-top: 22px;
+  box-shadow: 0 10px 30px #b8789010;
+}
+
+.hidden {
+  display: none;
+}
+
+.letter {
+  text-align: left;
+  padding: 25px;
+  background: #fffdfd;
+  border-radius: 6px;
+  box-shadow: 0 10px 35px #b8789020;
+  line-height: 2;
+  font-size: 14px;
+  transform: rotate(-1deg);
+}
+
+.letter p {
+  margin: 12px 0;
+}
+
+.gift {
+  font-size: 100px;
+  cursor: pointer;
+  display: inline-block;
+  animation: float 2s infinite;
+}
+
+.music {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 50px;
+  background: #fff;
+  color: #ad5878;
+  box-shadow: 0 3px 20px #0001;
+  font-size: 12px;
+}
+
+.floating {
+  position: fixed;
+  bottom: -30px;
+  color: #e5a4bc;
+  opacity: .55;
+  animation: rise linear forwards;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  color: #d8a0b7;
+  font-size: 18px;
+  margin: 8px;
+}
+
+#finalMessage {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes float {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-12px);}
+}
+
+@keyframes heartbeat {
+  0%,100% {transform: scale(1);}
+  15% {transform: scale(1.15);}
+  30% {transform: scale(1);}
+  45% {transform: scale(1.1);}
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background music: add kesariya.mp3 later -->
+<audio id="bgMusic" loop>
+  <source src="kesariya.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫ Music</button>
+
+<!-- SCREEN 1 -->
+<section class="screen active" id="s1">
+  <div class="content">
+    <span class="crown">👑</span>
+    <p class="small">A little world made for you</p>
+    <h1>For My<br>Princess ♡</h1>
+    <p>I've made a little something<br>just to make you smile.</p>
+    <button onclick="start()">Tap to enter my little world ♡</button>
+    <div class="sparkle">✧ &nbsp; ♡ &nbsp; ✧</div>
+  </div>
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen" id="s2">
+  <div class="content">
+    <span class="crown">🌷</span>
+    <p class="small">A little reminder</p>
+    <h2>Hey, Princess...</h2>
+    <p>
+      Aaj ka din tumhare naam.<br>
+      No big reason, no special gift...<br>
+      bas tumhe yaad dilana tha<br>
+      ki tum kitni special ho.
+    </p>
+    <button onclick="next(3)">There's something I want to tell you ♡</button>
+  </div>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen" id="s3">
+  <div class="content">
+    <p class="small">Little things I adore</p>
+    <h2>You're special because...</h2>
+
+    <div class="card">
+      <p>🌸 Your smile makes ordinary days feel beautiful.</p>
+    </div>
+
+    <div class="card">
+      <p>🫶 The way you are is something I never want you to change.</p>
+    </div>
+
+    <div class="card">
+      <p>✨ You deserve happiness, kindness and every beautiful little thing.</p>
+    </div>
+
+    <button onclick="next(4)">A letter for you 💌</button>
+  </div>
+</section>
+
+<!-- SCREEN 4 -->
+<section class="screen" id="s4">
+  <div class="content">
+    <p class="small">Written from my heart</p>
+    <h2>To My Princess ♡</h2>
+
+    <div class="letter">
+      <p>My Princess,</p>
+
+      <p>
+      Aaj Princess Day hai, aur mujhe kisi special day ki zarurat nahi
+      hoti tumhe special feel karane ke liye.
+      But aaj ek excuse mila hai tumhe thoda extra pyaar dene ka.
+      </p>
+
+      <p>
+      Chahe hum saath ho ya door, tumhari jagah meri life mein special hai.
+      I hope tum hamesha smile karo, apne dreams poore karo
+      aur kabhi ye mat bhoolna ki tum kitni precious ho.
+      </p>
+
+      <p>
+      Tumhe har din princess jaisa feel ho, sirf aaj nahi.
+      Take care of that beautiful heart of yours.
+      ❤️
+      </p>
+
+      <p style="text-align:right">— Someone who cares for you ♡</p>
+    </div>
+
+    <button onclick="next(5)">One little heart for you</button>
+  </div>
+</section>
+
+<!-- SCREEN 5 -->
+<section class="screen" id="s5">
+  <div class="content">
+    <p class="small">Don't forget to tap</p>
+    <h2>A little love ♡</h2>
+
+    <div class="heart" onclick="heartClick()">❤️</div>
+
+    <p id="heartText">Tap the heart...</p>
+
+    <button onclick="next(6)">One last thing... 🎁</button>
+  </div>
+</section>
+
+<!-- SCREEN 6 -->
+<section class="screen" id="s6">
+  <div class="content">
+    <p class="small">Wait... your surprise isn't over</p>
+    <h2>Something just for you 🎀</h2>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <p>Tap your gift to unlock your final surprise.</p>
+
+    <div id="giftReveal" class="hidden">
+      <div class="card">
+        <span class="crown">👑</span>
+        <p id="finalMessage">
+          If I could give you one thing today,<br>
+          it would be the ability to see yourself<br>
+          through the eyes of the people who care for you.<br><br>
+          You'd realize how truly special you are. ❤️
+        </p>
+        <p>Happy Princess Day, my girl ♡</p>
+        <p>Keep smiling, always. 🌷</p>
+      </div>
+
+      <button onclick="next(1)">Replay my surprise ↻</button>
+    </div>
+  </div>
+</section>
+
+<script>
+let current = 1;
+let musicStarted = false;
+
+function showScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+  });
+
+  document.getElementById('s' + n).classList.add('active');
+  current = n;
+  window.scrollTo(0, 0);
+}
+
+function next(n) {
+  showScreen(n);
+}
+
+function start() {
+  showScreen(2);
+  const music = document.getElementById('bgMusic');
+  music.play().then(() => {
+    musicStarted = true;
+    document.getElementById('musicBtn').innerText = '♫ Pause';
+  }).catch(() => {
+    document.getElementById('musicBtn').innerText = '♫ Play music';
+  });
+}
+
+function toggleMusic() {
+  const music = document.getElementById('bgMusic');
+  if (music.paused) {
+    music.play();
+    document.getElementById('musicBtn').innerText = '♫ Pause';
+  } else {
+    music.pause();
+    document.getElementById('musicBtn').innerText = '♫ Music';
+  }
+}
+
+let heartCount = 0;
+function heartClick() {
+  heartCount++;
+  const msgs = [
+    "Every heart has a story... ❤️",
+    "Here's a little love for you. 💗",
+    "Sending you a thousand smiles. 🌸",
+    "You deserve all the happiness. ✨",
+    "Happy Princess Day, my favourite girl. 👑"
+  ];
+  document.getElementById('heartText').innerText =
+    msgs[Math.min(heartCount - 1, msgs.length - 1)];
+}
+
+let giftOpened = false;
+function openGift() {
+  if (giftOpened) return;
+  giftOpened = true;
+  document.getElementById('giftReveal').classList.remove('hidden');
+  document.querySelector('.gift').innerText = '💝';
+}
+
+/* Floating hearts */
+function createHeart() {
+  const h = document.createElement('div');
+  h.className = 'floating';
+  h.innerText = ['♡','♥','✧','💕'][Math.floor(Math.random()*4)];
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.fontSize = (14 + Math.random()*20) + 'px';
+  h.style.animationDuration = (6 + Math.random()*5) + 's';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 11000);
+}
+setInterval(createHeart, 700);
+</script>
+
+</body>
+</html>
